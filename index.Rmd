@@ -1,7 +1,6 @@
 ---
 title: "TheMarioDance"
 author: "Juan Fernando Contreras"
-date: "2024-05-15"
 output: html_document
 ---
 
