@@ -1,0 +1,29 @@
+---
+title: "Problem Set 4"
+author: "Juan Fernando Contreras - Mariana Baquero Jara"
+date: "2024-06-05"
+output: html_document
+---
+
+Inicialmente voy a llamar los paquetes que quiero usar para este taller
+
+```{r, eval=TRUE, echo=TRUE, message=FALSE}
+#instalar/llamar pacman
+require(pacman)
+
+
+#uso la funcion p_load de pacman para instalar/llamar las librerias que se usaran en el problem set
+p_load(rio, # funcion import/export: permite leer/escribir archivos desde diferentes formatos
+       skimr, # funcion skim: describe un conjunto de datos
+       janitor, # contiene conjuntos de datos
+       tidyverse, # manipular/limpiar conjuntos de datos
+       dplyr, #manipular dataframes
+       data.table, # renombar variables
+       sf, #Manipular datos espaciales
+       rvest, #Manipular HTML
+       mapview, #Visualizar datos espaciales interactivamente
+       tmaptools, #Para mapas y manipulacion de datos espaciales
+       osmdata, #Manipular y descargar datos
+       ggplot2, #Creacion de graficos
+       viridis) #para la paleta de colores
+```
