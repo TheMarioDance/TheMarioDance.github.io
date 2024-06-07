@@ -87,3 +87,47 @@ mapa=ggplot() + geom_sf(data=bog) + geom_sf(data=sf_house, aes(color=price))+
 mapa
 ```
 
+## Bono.
+
+En primer lugar, realizamos estadísticas descriptivas:
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE}
+summary(db_house)
+```
+El conjunto de datos analizado refleja varias características de propiedades inmobiliarias, incluyendo el número de habitaciones, dormitorios, baños, así como detalles sobre las superficies y los precios. La mayoría de las propiedades tienen 3 habitaciones y 3 dormitorios, indicado por las medianas y los terceros cuartiles. Sin embargo, el máximo de 12 en ambas categorías sugiere la presencia de propiedades de gran tamaño o posibles anomalías en los datos.
+
+La distribución de los baños muestra que la mayoría de las propiedades tienen entre 2 y 3, con un promedio ligeramente superior a 2.5. Esto sugiere que es común que las propiedades incluyan múltiples baños. Las variables de superficie, tanto total como cubierta, exhiben una gran variabilidad y valores extremadamente altos, lo que indica un sesgo hacia propiedades más grandes o atípicas. Este sesgo también se observa en los precios, que varían desde 19 millones hasta 90 mil millones, con una media mucho mayor que la mediana, reflejando la influencia de propiedades de alto valor en el conjunto.
+
+Ahora, revisamos algunas gráficos de distribución de las variables de interés:
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE}
+ggplot(sf_house, aes(x = price)) +  
+  geom_histogram(bins = 30, fill = "blue", color = "black") +
+  labs(title = "Distribución de Precios", x = "Precio", y = "Frecuencia") +
+  theme_minimal()
+```
+  
+```{r, eval=TRUE, echo=FALSE, message=FALSE}
+ggplot(sf_house, aes(x = rooms)) +  
+  geom_histogram(bins = 30, fill = "blue", color = "black") +
+  labs(title = "Distribución de Habitaciones", x = "Habitaciones", y = "Frecuencia") +
+  theme_minimal()
+```
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE}
+ggplot(sf_house, aes(x = bathrooms)) +  
+  geom_histogram(bins = 30, fill = "blue", color = "black") +
+  labs(title = "Distribución de Baños", x = "Baños", y = "Frecuencia") +
+  theme_minimal()
+```
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE}
+ggplot(data = sf_house, aes(x = property_type)) + 
+  geom_bar(fill = "blue", color = "black") +  
+  labs(title = "Distribución de Tipos de Propiedad",
+       x = "Tipo de Propiedad",
+       y = "Frecuencia") +
+  theme_minimal()
+```
+
+Los gráficos destacan una notable disparidad en el mercado inmobiliario. Mientras la mayoría de las propiedades se agrupan en un rango de precio accesible, un pequeño segmento alcanza valores extremadamente altos, lo que podría indicar una presencia significativa de propiedades de lujo o altamente especializadas. A nivel de tipo de propiedad, los apartamentos dominan claramente el mercado, reflejando una tendencia urbana hacia la vivienda compacta y eficiente. Este análisis sugiere un mercado dividido, con una amplia oferta de propiedades estándar complementada por una exclusiva selección de unidades de alto valor, lo cual plantea consideraciones importantes para estrategias de inversión y desarrollo urbano.
